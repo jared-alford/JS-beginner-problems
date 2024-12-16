@@ -278,4 +278,73 @@ function convertToBoolean(arr) {
 }
 console.log(convertToBoolean([5, 4, 0, null, 7]))
 
+
+function showRating(rating) {
+  let ratings = '';
+  for (let i = 0; i < Math.floor(rating); ++i) {
+    ratings += '*';
+    if (i !== Math.floor(rating) - 1) {
+      ratings += ' ';
+    }
+  }
+  if (!Number.isInteger(rating)) {
+    ratings += ' .';
+  }
+  return ratings;
+}
+
+console.log(showRating(5));
+
+// intialize an empty string
+// loop through the rounded down rating
+  // add a star for every iteration
+  // if it's not the last iteration, add a space
+// if it's not an integer, add a full stop
+// return the rating
+
+
+
+function sortLowToHigh(numbers) {
+  return numbers.sort((a, b) => a - b);
+}
+
+console.log(sortLowToHigh([4, 8, 3, 22, 99]));
+
+
+
+function sortHighToLow(prices) {
+  return prices.sort((a, b) => {
+    return b.price - a.price;
+  })
+}
+
+console.log(sortHighToLow([ 
+    {id: 5, price: 50}, 
+    {id: 4, price: 44}, 
+    {id: 6, price: 67}, 
+    {id: 3, price: 33}
+  ])
+);
+
+
+
+async function postsByUser(userId) {
+  const promise = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const result = await promise.json();
+  const posts = result.filter(element => element.userId === userId);
+  console.log(posts);
+}
+
+postsByUser(4);
+
+
+async function firstSixIncomplete(posts) {
+  const promise = await fetch("https://jsonplaceholder.typicode.com/todos");
+  const result = await promise.json();
+  const incompletePosts = result.filter(element => !element.completed).slice(0, 6);
+  console.log(incompletePosts);
+}
+
+firstSixIncomplete(7);
+
 */
